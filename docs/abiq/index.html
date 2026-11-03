@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ABIQ | Interactive Sports Decision Intelligence | Abigail Millsap</title>
+<meta name="description" content="Interactive, independent, static portfolio showcase for ABIQ sports decision intelligence.">
+<link rel="stylesheet" href="app.css">
+<style>html,body{margin:0;min-height:100%;background:#111313}body{font-family:Inter,Arial,sans-serif}.portfolio-home{position:relative;z-index:101;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;background:#0b0e10;color:#f1ece6;padding:10px 20px;font-size:12px;letter-spacing:.03em}.portfolio-home a{color:#d5a27f;text-decoration:none;font-weight:700}.portfolio-home span{opacity:.7}#abiq-boot-error{padding:20px;background:#401c1c;color:#fff}</style></head>
+<body><div class="portfolio-home"><a href="../">← Abigail Millsap · Product Portfolio</a><span>ABIQ | Browser-based interactive product prototype · No Streamlit required</span></div>
+<div id="abiq-boot-error" hidden>ABIQ could not initialize. Please refresh the page.</div>
+<style>
+  /* Desktop Forecasts needs to respond to the usable content width after the
+     persistent ABIQ navigation rail, not just the raw browser width. Standard
+     laptop/desktop viewports therefore stack the two analysis panels so the
+     ranked board never clips; ultra-wide layouts keep a weighted two-column view. */
+  @media (min-width: 861px) and (max-width: 1680px) {
+    #page-forecasts .abiq-forecast-visual-grid {
+      grid-template-columns: 1fr !important;
+      align-items: start !important;
+    }
+
+    #page-forecasts .abiq-forecast-board,
+    #page-forecasts .abiq-upset-panel {
+      width: 100% !important;
+      min-width: 0 !important;
+    }
+  }
+
+  @media (min-width: 1681px) {
+    #page-forecasts .abiq-forecast-visual-grid {
+      grid-template-columns: minmax(0, 1.3fr) minmax(420px, .7fr) !important;
+      align-items: start !important;
+    }
+  }
+
+  /* The disclosure belongs visually in the center of the gap between the
+     Performance hero and metric cards. Remove the hero's default bottom margin
+     and give the disclosure equal space on both sides at every breakpoint. */
+  .abiq-page-performance > .abiq-page-head {
+    margin-bottom: 0 !important;
+  }
+
+  .abiq-performance-disclosure {
+    width: 100% !important;
+    margin: 12px auto !important;
+  }
+
+  @media (max-width: 860px) {
+    .abiq-performance-disclosure {
+      margin: 10px auto !important;
+    }
+  }
+</style>
+
+<div id="abiq-dashboard-root" class="abiq-app">
+  <input id="abiq-mobile-nav-toggle" class="abiq-mobile-nav-toggle" type="checkbox" aria-hidden="true" tabindex="-1">
+  <label class="abiq-mobile-menu-button" for="abiq-mobile-nav-toggle" aria-label="Open ABIQ navigation"><span></span></label>
+  <label class="abiq-mobile-nav-backdrop" for="abiq-mobile-nav-toggle" aria-label="Close ABIQ navigation"></label>
+
+  <aside class="abiq-sidebar">
+    <label class="abiq-mobile-nav-close" for="abiq-mobile-nav-toggle" aria-label="Close ABIQ navigation">×</label>
+    <div class="abiq-brand-block">
+      <img id="abiq-brand-logo" class="abiq-brand-logo" alt="ABIQ">
+      <div class="abiq-brand-meaning"><span>ANALYTICS</span><b>•</b><span>BALANCE</span><b>•</b><span>INTELLIGENCE</span><b>•</b><span>QUALITY</span></div>
+    </div>
+    <nav id="abiq-nav" class="abiq-nav" aria-label="ABIQ Showcase navigation"></nav>
+    <div class="abiq-profile">
+      <div id="abiq-profile-avatar" class="abiq-profile-avatar">AM</div>
+      <div class="abiq-profile-copy"><div id="abiq-profile-name" class="abiq-profile-name">Abigail Millsap</div><div class="abiq-profile-sub">Portfolio Showcase</div></div>
+      <span class="abiq-profile-chevron">⌄</span>
+    </div>
+  </aside>
+
+  <main class="abiq-main">
+    <header class="abiq-header">
+      <div><div id="abiq-greeting" class="abiq-greeting">Welcome to ABIQ.</div><div class="abiq-greeting-sub">Smarter decisions through analytics.</div></div>
+      <div class="abiq-header-actions">
+        <div class="abiq-static-pill">STATIC SHOWCASE</div>
+        <label class="abiq-week-control"><span class="abiq-calendar-icon" aria-hidden="true"></span><select id="abiq-week-select" aria-label="Select Showcase week"></select><span class="abiq-select-chevron">⌄</span></label>
+      </div>
+    </header>
+
+    <section id="page-dashboard" class="abiq-page active" data-page="Dashboard">
+      <section class="abiq-hero abiq-surface">
+        <div class="abiq-hero-copy">
+          <div class="abiq-eyebrow">WEEKLY OUTLOOK</div>
+          <h1>Edge comes from<br>process, not predictions.</h1>
+          <p id="abiq-hero-description"></p>
+          <button id="abiq-preview-button" class="abiq-outline-button" type="button">EXPLORE NFL FORECASTS <span>›</span></button>
+        </div>
+        <div class="abiq-playbook" aria-hidden="true">
+          <svg viewBox="0 0 760 280">
+            <defs><marker id="arrow-gray" markerWidth="10" markerHeight="10" refX="8" refY="4.5" orient="auto"><path d="M0,0 L0,9 L9,4.5 z"></path></marker><marker id="arrow-copper" markerWidth="10" markerHeight="10" refX="8" refY="4.5" orient="auto"><path d="M0,0 L0,9 L9,4.5 z"></path></marker></defs>
+            <path class="play-line play-primary" d="M716 69 C620 27 514 22 423 33 C334 44 269 68 209 111" marker-end="url(#arrow-gray)"></path>
+            <path class="play-line play-primary play-soft" d="M695 212 C608 244 507 247 419 229 C347 214 284 185 231 151" marker-end="url(#arrow-gray)"></path>
+            <path class="play-line play-soft" d="M189 92 C279 125 367 142 452 140 C543 138 619 113 686 82"></path>
+            <path class="play-line play-copper" d="M682 119 C624 135 586 158 553 192 C535 211 517 223 493 233" marker-end="url(#arrow-copper)"></path>
+            <circle class="play-circle" cx="196" cy="162" r="14"></circle><circle class="play-circle" cx="327" cy="198" r="12"></circle><circle class="play-circle" cx="574" cy="101" r="15"></circle><circle class="play-circle play-copper" cx="647" cy="174" r="14"></circle>
+            <g class="play-x" transform="translate(242 91)"><path d="M-9 -9 L9 9 M9 -9 L-9 9"></path></g><g class="play-x" transform="translate(470 93)"><path d="M-9 -9 L9 9 M9 -9 L-9 9"></path></g><g class="play-x" transform="translate(612 226)"><path d="M-9 -9 L9 9 M9 -9 L-9 9"></path></g><g class="play-x" transform="translate(692 57)"><path d="M-8 -8 L8 8 M8 -8 L-8 8"></path></g>
+          </svg>
+        </div>
+        <img id="abiq-hero-iq" class="abiq-hero-iq" alt="" aria-hidden="true">
+      </section>
+      <section id="abiq-weekly-command" class="abiq-weekly-command abiq-surface" aria-label="Combined NFL and college football weekly picks">
+        <div class="abiq-weekly-head">
+          <div><div class="abiq-eyebrow">NFL + COLLEGE FOOTBALL · WEEKLY DECISIONS</div><h2>This week's picks</h2></div>
+          <span id="abiq-weekly-week" class="abiq-weekly-week">WEEK 1</span>
+        </div>
+        <p class="abiq-weekly-intro" id="abiq-weekly-summary">Select a planning week to explore the frozen NFL Showcase snapshot and interactive SEC / Big Ten survivor paths.</p>
+        <div class="abiq-weekly-group">
+          <div class="abiq-weekly-group-head"><h3 id="abiq-weekly-nfl-title">NFL · Frozen Week 1 example</h3><span>MODEL FORECAST · STATIC EXAMPLE</span></div>
+          <div id="abiq-weekly-nfl-picks" class="abiq-weekly-grid"></div>
+        </div>
+        <div class="abiq-weekly-group">
+          <div class="abiq-weekly-group-head"><h3>College Football · Survivor</h3><span>SEC + BIG TEN · INTERACTIVE DEMO</span></div>
+          <div id="abiq-weekly-cfb-picks" class="abiq-weekly-grid abiq-weekly-cfb-grid"></div>
+        </div>
+        <div class="abiq-weekly-boundary"><strong>Public Showcase data boundary.</strong> NFL picks are frozen September 2026 Week 1 representative forecasts, not live recommendations. CFB games and win chances are generated examples, not actual 2026 schedules or calibrated model output. Week numbers are planning labels, not a claim that NFL and college calendars align. The two types of probability should not be compared as equivalent evidence.</div>
+      </section>
+      <section id="abiq-kpis" class="abiq-kpi-grid"></section>
+      <section class="abiq-lower-grid">
+        <article class="abiq-panel abiq-surface"><div class="abiq-panel-heading"><span>UPCOMING GAMES</span><button type="button" data-page-target="Forecasts">VIEW ALL <b>›</b></button></div><div id="abiq-games"></div></article>
+        <article class="abiq-panel abiq-surface"><div class="abiq-panel-heading"><span>MODEL RECOMMENDATIONS</span><button type="button" data-page-target="Forecasts">VIEW ALL <b>›</b></button></div><div id="abiq-recommendations"></div></article>
+      </section>
+      <section class="abiq-context-snapshot abiq-surface" aria-label="Static forecast context examples">
+        <div class="abiq-context-heading"><div><div class="abiq-eyebrow">STATIC FORECAST CONTEXT</div><h3>Weather and injury inputs behind the decision.</h3></div><span>ILLUSTRATIVE SNAPSHOT</span></div>
+        <div class="abiq-context-grid">
+          <article class="abiq-context-card"><strong>LAC vs ARI</strong><div><span>WEATHER</span>Clear · 78° · 6 mph wind</div><div><span>INJURIES</span>ARI WR1 questionable</div></article>
+          <article class="abiq-context-card"><strong>JAX vs CLE</strong><div><span>WEATHER</span>Rain chance · 12 mph wind</div><div><span>INJURIES</span>CLE LT out</div></article>
+          <article class="abiq-context-card"><strong>DET vs NO</strong><div><span>WEATHER</span>Dome · conditions stable</div><div><span>INJURIES</span>NO RB limited</div></article>
+        </div>
+      </section>
+      <div class="abiq-disclosure"><strong>Static portfolio example.</strong> Representative data demonstrates the ABIQ product experience; verified historical evidence is summarized on Performance.</div>
+    </section>
+
+    <section id="page-forecasts" class="abiq-page" data-page="Forecasts">
+      <section class="abiq-page-head abiq-exec-head abiq-surface abiq-accent-surface">
+        <div class="abiq-exec-copy"><div class="abiq-eyebrow">WEEKLY FORECAST · RISK INTELLIGENCE</div><h2>NFL Forecasts</h2><p>Who is most likely to win, where confidence is strongest, and which matchups deserve an upset watch.</p></div>
+        <img class="abiq-page-watermark" data-iq alt="" aria-hidden="true">
+      </section>
+      <section class="abiq-takeaway abiq-surface">
+        <div><div class="abiq-eyebrow">EXECUTIVE TAKEAWAY</div><h3>LAC is the clearest favorite; CIN–TB carries the highest featured upset pressure.</h3><p>Static Week 1 Showcase values illustrate how ABIQ separates the expected winner from uncertainty. These are representative product signals, not a live weekly issuance.</p></div>
+        <div id="abiq-weekly-bars" class="abiq-bars"></div>
+      </section>
+
+      <section class="abiq-forecast-visual-grid">
+        <article class="abiq-forecast-board abiq-surface">
+          <div class="abiq-visual-heading"><div><div class="abiq-eyebrow">RANKED FORECAST BOARD</div><h3>Strongest expected winners</h3></div><span>STATIC EXAMPLE</span></div>
+          <div id="abiq-forecast-board"></div>
+        </article>
+        <article class="abiq-upset-panel abiq-surface abiq-secondary-surface">
+          <div class="abiq-visual-heading"><div><div class="abiq-eyebrow">UPSET RISK MATRIX</div><h3>Where favorites look vulnerable</h3></div><span>WEEK 1</span></div>
+          <div id="abiq-upset-matrix" class="abiq-upset-matrix"></div>
+          <p class="abiq-chart-note">Upset pressure rescales the displayed favorite probability: closer to 50/50 means higher pressure. It is not a betting edge or a separate live model.</p>
+        </article>
+      </section>
+
+      <section class="abiq-upset-watch">
+        <div class="abiq-flow-heading"><div class="abiq-eyebrow">UPSET ALERTS</div><h3>The favorites with the least room for error.</h3></div>
+        <div id="abiq-upset-alerts" class="abiq-upset-alert-grid"></div>
+      </section>
+    </section>
+
+    <section id="page-performance" class="abiq-page abiq-page-performance" data-page="Performance">
+      <section class="abiq-page-head abiq-exec-head abiq-surface abiq-accent-surface">
+        <div class="abiq-exec-copy"><div class="abiq-eyebrow">VALIDATION · ENGINEERING · TRUST</div><h2>Performance</h2><p>Evidence that the forecasts are useful, repeatable and built with prediction-time discipline rather than hindsight.</p></div>
+        <img class="abiq-page-watermark" data-iq alt="" aria-hidden="true">
+      </section>
+      <div class="abiq-disclosure abiq-performance-disclosure"><strong>Verified performance data.</strong> These metrics are calculated from real, graded ABIQ model outcomes, not illustrative Showcase values. During the NFL season, this view is refreshed weekly as completed games are scored so it continues to reflect actual model performance.</div>
+      <section id="abiq-performance-metrics" class="abiq-feature-grid"></section>
+      <section class="abiq-reliability-panel abiq-surface abiq-secondary-surface">
+        <div class="abiq-visual-heading"><div><div class="abiq-eyebrow">CONFIDENCE RELIABILITY</div><h3>Higher confidence translated into higher win rates.</h3></div><span>2025 REPLAY</span></div>
+        <div class="abiq-reliability-legend"><span class="abiq-reliability-key predicted"><i></i>Model probability</span><span class="abiq-reliability-key observed"><i></i>Observed win rate</span></div>
+        <div id="abiq-reliability-chart" class="abiq-reliability-chart"></div>
+        <p class="abiq-chart-note">Across the point-in-time replay, higher confidence thresholds produced progressively higher observed win rates.</p>
+      </section>
+      <section class="abiq-performance-flow">
+        <div class="abiq-flow-heading"><div class="abiq-eyebrow">HOW ABIQ WORKS</div><h3>From raw football data to a decision-ready forecast.</h3></div>
+        <section id="abiq-platform-pipeline" class="abiq-pipeline abiq-exec-pipeline"></section>
+      </section>
+      <section class="abiq-story-grid">
+        <article class="abiq-story abiq-surface"><div class="abiq-eyebrow">AUTOMATION</div><h3>Built to operate without a notebook open.</h3><p>Scheduled refreshes, validation checks and fail-safe operating paths turn modeling into a repeatable product workflow.</p></article>
+        <article class="abiq-story abiq-surface abiq-secondary-surface"><div class="abiq-eyebrow">PUBLIC / PRIVATE BOUNDARY</div><h3>Executive visibility without exposing production state.</h3><p>The Showcase contains no private picks, user persistence, credentials or provider secrets.</p></article>
+      </section>
+    </section>
+    <section id="page-cfb-survivor" class="abiq-page abiq-cfb-page" data-page="CFB Survivor">
+      <section class="abiq-page-head abiq-exec-head abiq-surface abiq-accent-surface">
+        <div class="abiq-exec-copy">
+          <div class="abiq-eyebrow">COLLEGE FOOTBALL · SEASON STRATEGY</div>
+          <h2>CFB Survivor</h2>
+          <p>One pick changes the whole board. Explore conference-specific survivor paths, preserve valuable teams, and test what happens when you take a different route.</p>
+        </div>
+        <img class="abiq-page-watermark" data-iq alt="" aria-hidden="true">
+      </section>
+      <div class="abiq-disclosure abiq-cfb-disclosure">
+        <strong>Interactive portfolio prototype.</strong> All conference schedules, matchups, and probabilities in this module are constructed illustrations, not the official 2026 schedule, live ABIQ forecasts, or validated CFB outcomes. Reoptimization is functional; its probability inputs are examples.
+      </div>
+      <section class="abiq-cfb-toolbar abiq-surface" aria-label="Survivor scenario controls">
+        <div class="abiq-cfb-field">
+          <label for="abiq-cfb-conference">CONFERENCE</label>
+          <div class="abiq-cfb-switch" id="abiq-cfb-conference" role="group" aria-label="Conference">
+            <button type="button" data-conference="SEC" aria-pressed="true">SEC</button>
+            <button type="button" data-conference="BIG TEN" aria-pressed="false">BIG TEN</button>
+          </div>
+        </div>
+        <div class="abiq-cfb-field">
+          <label for="abiq-cfb-week">PLANNING WEEK</label>
+          <select id="abiq-cfb-week" aria-label="Planning week"></select>
+        </div>
+        <div class="abiq-cfb-field abiq-cfb-reset-field">
+          <span class="abiq-cfb-field-caption">SCENARIO</span>
+          <button type="button" id="abiq-cfb-reset" class="abiq-outline-button">RESET TO OPTIMAL PATH ↺</button>
+        </div>
+      </section>
+      <div id="abiq-cfb-notice" class="abiq-cfb-notice" role="status" aria-live="polite"></div>
+      <section id="abiq-cfb-metrics" class="abiq-cfb-metrics" aria-label="Season plan metrics"></section>
+      <section class="abiq-cfb-main-grid">
+        <article class="abiq-cfb-recommendations abiq-surface">
+          <div class="abiq-visual-heading"><div><div class="abiq-eyebrow">WEEKLY SHORTLIST</div><h3>Top suggested picks</h3></div><span id="abiq-cfb-week-heading">WEEK 1</span></div>
+          <p class="abiq-cfb-intro">Select a team to commit it to the scenario. Future weeks are recalculated around that decision.</p>
+          <div id="abiq-cfb-picks"></div>
+        </article>
+        <article class="abiq-cfb-plan abiq-surface abiq-secondary-surface">
+          <div class="abiq-visual-heading"><div><div class="abiq-eyebrow">WHAT-IF ENGINE</div><h3>How the decision changes the path</h3></div><span>REOPTIMIZED</span></div>
+          <div id="abiq-cfb-impact"></div>
+          <div class="abiq-cfb-help">Past weeks remain fixed when you change a later week. Teams cannot be selected twice in the same conference plan. Each conference has its own scenario.</div>
+        </article>
+      </section>
+      <section class="abiq-cfb-season abiq-surface">
+        <div class="abiq-visual-heading"><div><div class="abiq-eyebrow">FULL-SEASON OUTLOOK</div><h3>Every week. One strategic path.</h3></div><span>WEEKS 1–14</span></div>
+        <p class="abiq-cfb-intro">A 14-week planning illustration. Choose any week to compare alternatives; copper-marked selections are manual overrides.</p>
+        <div id="abiq-cfb-season-grid" class="abiq-cfb-season-grid"></div>
+      </section>
+      <section class="abiq-cfb-schedule abiq-surface abiq-secondary-surface">
+        <div class="abiq-cfb-schedule-top">
+          <div><div class="abiq-eyebrow">TEAM INTELLIGENCE</div><h3>Full team schedule explorer</h3><p>See every illustrative matchup, bye week, and whether that team is being saved for a better survivor spot.</p></div>
+          <div class="abiq-cfb-field"><label for="abiq-cfb-team">EXPLORE TEAM</label><select id="abiq-cfb-team" aria-label="Team schedule"></select></div>
+        </div>
+        <div id="abiq-cfb-team-summary"></div>
+        <div id="abiq-cfb-schedule-table" class="abiq-cfb-table-scroll"></div>
+      </section>
+      <div class="abiq-disclosure"><strong>Model boundary.</strong> The public optimizer maximizes the product of illustrative per-week win inputs subject to one unique team per week, with user selections fixed. It is a transparent scenario-planning demo, not a claim of calibrated CFB win probabilities, true season-survival likelihood, or official schedules.</div>
+    </section>
+  </main>
+</div>
+<script src="app.js"></script></body></html>
