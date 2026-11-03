@@ -17,20 +17,15 @@
 
     if (key === 'field') {
       html = html
-        .replace(/<img id="logo"\s*\/?\s*>/i, '<span id="logo" class="portfolio-neutral-logo">PRO</span>')
+        .replace(/<img id="logo"\s*\/?\s*>/i, '<span id="logo" aria-hidden="true"></span>')
         .replace(/"logo":"data:image\/png;base64,[A-Za-z0-9+/=]+"/, '"logo":""');
-      css = '.logoCrop{overflow:visible!important;align-items:center!important}' +
-        '.portfolio-neutral-logo{display:block!important;font:bold 26px/34px Arial,sans-serif!important;' +
-        'letter-spacing:.10em;color:#fff!important;white-space:nowrap}';
+      css = '.logoCrop #logo{display:none!important}';
     } else {
       html = html.replace(
         /<img alt="Lowe['\u2019]s Pro Construction Insights" src="data:image\/png;base64,[A-Za-z0-9+/=]+"\s*\/?\s*>/i,
-        '<div class="portfolio-neutral-market-brand"><strong>PRO</strong><span>Construction Insights</span></div>'
+        '<div class="portfolio-neutral-market-brand" aria-hidden="true"></div>'
       );
-      css = '.portfolio-neutral-market-brand{display:flex;flex-direction:column;gap:5px;' +
-        'align-self:center;color:#fff;white-space:nowrap}' +
-        '.portfolio-neutral-market-brand strong{font:bold 25px/1 Arial,sans-serif;letter-spacing:.07em}' +
-        '.portfolio-neutral-market-brand span{font:700 11px/1.2 Arial,sans-serif;color:#d8e9fa}' +
+      css = '.portfolio-neutral-market-brand{display:block!important;width:100%;height:100%;}' +
         'html body #app{height:calc(100vh - 40px)!important;min-height:0!important;overflow:hidden!important}' +
         '#app>.sidebar{top:0!important;height:100%!important;min-height:0!important}' +
         '#app>.main{height:100%!important;min-height:0!important;overflow:auto!important;position:relative!important}' +
