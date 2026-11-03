@@ -1,4 +1,7 @@
-:host {
+/* Streamlit originally mounted this UI in a shadow root. The public standalone
+   HTML uses the document root instead; initialize the same ABIQ palette in both
+   contexts so default text never falls back to the browser's black. */
+:root, :host {
   --copper:#c6784c;
   --copper-bright:#dc8d5e;
   --copper-deep:#704027;
@@ -7,7 +10,7 @@
   --panel-2:#1b1d1d;
   --border:#353737;
   --border-soft:#262828;
-  --text:#ddd7cf;
+  --text:#f2ede6;
   --muted:#9b958e;
   --dim:#716c66;
   --base-texture:none;
@@ -22,7 +25,7 @@
 *{box-sizing:border-box} button,select{font:inherit} button{cursor:pointer}
 .abiq-mobile-nav-toggle,.abiq-mobile-menu-button,.abiq-mobile-nav-backdrop,.abiq-mobile-nav-close{display:none}
 
-.abiq-app{width:100%;min-height:930px;display:grid;grid-template-columns:273px minmax(0,1fr);gap:12px;padding:11px;background-color:#121414;background-image:linear-gradient(145deg,rgba(4,5,5,.10),rgba(8,9,9,.05),rgba(4,5,5,.12)),var(--base-texture);background-size:cover,cover;background-position:center;background-repeat:no-repeat;background-blend-mode:normal,normal}
+.abiq-app{color:var(--text, #f3eee7);width:100%;min-height:930px;display:grid;grid-template-columns:273px minmax(0,1fr);gap:12px;padding:11px;background-color:#121414;background-image:linear-gradient(145deg,rgba(4,5,5,.10),rgba(8,9,9,.05),rgba(4,5,5,.12)),var(--base-texture);background-size:cover,cover;background-position:center;background-repeat:no-repeat;background-blend-mode:normal,normal}
 .abiq-sidebar,.abiq-main{border:1px solid #303232;background-color:#171919;background-image:linear-gradient(160deg,rgba(8,9,9,.10),rgba(5,6,6,.12)),var(--base-texture);background-size:cover,cover;background-position:center;background-repeat:no-repeat;background-blend-mode:normal,normal;box-shadow:0 15px 36px rgba(0,0,0,.16)}
 .abiq-sidebar{min-height:906px;border-radius:10px;overflow:hidden;display:flex;flex-direction:column}.abiq-brand-block{padding:31px 27px 24px;border-bottom:1px solid var(--border-soft)}.abiq-brand-logo{display:block;width:100%;max-width:178px;height:auto;margin:0 auto}.abiq-brand-meaning{margin:15px auto 0;max-width:184px;display:flex;flex-wrap:wrap;justify-content:flex-start;column-gap:7px;row-gap:4px;color:#8e8881;font-size:8px;line-height:1.35;letter-spacing:.17em;font-weight:600;text-transform:uppercase}.abiq-brand-meaning b{color:var(--copper);font-size:8px;line-height:1.65}
 .abiq-nav{padding:16px 14px 12px;display:grid;gap:4px}.abiq-nav-item{width:100%;height:58px;display:flex;align-items:center;justify-content:flex-start;gap:15px;padding:0 16px;border:0;border-left:2px solid transparent;border-radius:6px;background:transparent;color:#c4beb6;text-align:left;font-size:13px;font-weight:450;letter-spacing:.005em}.abiq-nav-item:hover{background:rgba(255,255,255,.03)}.abiq-nav-item.active{border:1px solid rgba(198,120,76,.46);border-left:3px solid var(--copper-bright);background:linear-gradient(90deg,rgba(198,120,76,.10),rgba(255,255,255,.035));color:#e3ddd5}.abiq-nav-icon{width:25px;height:25px;flex:0 0 25px;color:#bdb7af}.abiq-nav-item.active .abiq-nav-icon{color:var(--copper-bright)}.abiq-nav-icon svg{display:block;width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.55;stroke-linecap:round;stroke-linejoin:round}
