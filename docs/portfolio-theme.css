@@ -76,3 +76,35 @@ body{background:var(--bg);color:var(--ink)}
 @media(max-width:400px){
   .caseActions .button{min-width:130px;font-size:10px}
 }
+
+/* Human-scale editorial introduction. No decorative grid, oversized slogan,
+   or buzzword badges; keep ABIQ's copper as a quiet accent. */
+.intro{background:#303433;color:#f9f7f3;border-bottom:1px solid #474a46}
+.intro::before{content:none!important;display:none!important}
+.intro .shell{padding-top:66px;padding-bottom:70px}
+.introKicker{
+  font-size:13px;font-weight:600;text-transform:none;letter-spacing:0;
+  color:#d9b9a5;margin-bottom:20px
+}
+.intro h1{
+  font-size:clamp(31px,3.45vw,42px);font-weight:750;line-height:1.14;
+  letter-spacing:-.032em;max-width:790px;width:100%
+}
+.intro h1 span{color:#e4bfa7}
+.intro p{max-width:675px;width:100%;font-size:15px;line-height:1.7;margin-top:22px;color:#e4e0da}
+.introMeta{display:none}
+.heroWorkLink{
+  display:inline-flex;gap:13px;align-items:center;
+  margin-top:28px;padding-bottom:7px;
+  font-size:13px;font-weight:650;color:#f0e5dc;
+  text-decoration:none;border-bottom:1px solid #bd947b
+}
+.heroWorkLink:hover{color:#edc5aa;border-bottom-color:#edc5aa}
+.heroWorkLink span{font-size:18px;line-height:1}
+@media(max-width:700px){
+  .intro .shell{padding-top:47px;padding-bottom:51px}
+  .introKicker{font-size:12px;margin-bottom:16px}
+  .intro h1{font-size:clamp(30px,7vw,38px);max-width:100%}
+  .intro p{font-size:14px;margin-top:18px}
+  .heroWorkLink{margin-top:23px}
+}
