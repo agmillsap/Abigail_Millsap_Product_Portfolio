@@ -38,7 +38,7 @@ h1{font-size:24px;margin-bottom:10px}p{color:#62738a;line-height:1.5}.loading{fo
   const redesigned=sanitized.replace(heroPattern,"<section class=\"intro\"><div class=\"shell heroLayout\"><div class=\"introKicker\">Product strategy · Decision intelligence · Workflow design</div><h1>Decision tools designed to solve <span>complex business problems</span></h1><p>Combining business strategy, analytics, and product design to define the problem, shape the workflow, and build interactive tools that help people move from information to action.</p><div class=\"heroFooter\"><div class=\"introMeta\"><span>Problem framing</span><span>Interactive prototyping</span><span>Analytics products</span><span>Enterprise workflows</span></div><a class=\"heroWorkLink\" href=\"#work\">View the projects <span aria-hidden=\"true\">↓</span></a></div></div></section>");
   // Restore the source HTML's live iframe previews and original interactive demos.
   const integrated=redesigned
-    .replace(/<\/head>/i,'<link rel="stylesheet" href="./portfolio-theme.css?v=20261103-original-demos-restored">'+'<scr'+'ipt src="./dashboard-clean.js?v=20261102-targeted-brand-fix"></scr'+'ipt></head>')
+    .replace(/<\/head>/i,'<link rel="stylesheet" href="./portfolio-theme.css?v=20261103-original-demos-restored">'+'<scr'+'ipt src="./dashboard-clean.js?v=20261103-no-brand-wordmarks"></scr'+'ipt></head>')
     .replaceAll('https://abiq-sports.streamlit.app','./abiq/')
     .replace('>Open ABIQ</a>','>Open interactive demo</a>')
     .replaceAll('href="./abiq/" target="_blank" rel="noopener"','href="./abiq/"')
