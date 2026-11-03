@@ -132,3 +132,40 @@ body{background:var(--bg);color:var(--ink)}
   .intro p{font-size:13px;line-height:1.6}
   .introMeta span{font-size:9.5px}
 }
+
+/* Lightweight dashboard thumbnails: stable, readable even before any demo opens.
+   Avoid constructing two 20-30MB interactive iframes on the portfolio landing page. */
+.previewViewport{background:#f6f8fa;overflow:hidden}
+.thumb-dashboard{
+  height:100%;width:100%;overflow:hidden;position:relative;
+  font-family:Inter,Arial,Helvetica,sans-serif;color:#24374c;background:#f4f6f9;
+  text-align:left;line-height:1.25;pointer-events:none
+}
+.thumb-alert{height:15px;display:flex;align-items:center;justify-content:center;
+  color:#fff;background:#ba2424;font-size:6.2px;font-weight:800;letter-spacing:.075em}
+.thumb-stage{height:calc(100% - 15px);display:grid;grid-template-columns:74px minmax(0,1fr)}
+.thumb-rail{background:#122b49;color:#fff;padding:10px 5px}
+.thumb-rail strong{display:block;font-size:8px;line-height:1.3;margin:0 0 13px}
+.thumb-rail span{display:block;font-size:6.4px;line-height:1.35;padding:5px 4px;margin-bottom:3px;border-radius:3px;color:#d5dfec}
+.thumb-rail span:first-of-type{background:#30649e;color:#fff}
+.thumb-content{min-width:0;padding:8px}
+.thumb-content h4{margin:0 0 3px;font-size:13px;font-weight:800;letter-spacing:-.025em;color:#253f60}
+.thumb-content .thumb-sub{font-size:7px;color:#71829a;margin:0 0 8px}
+.thumb-kpis{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+.thumb-kpi{border:1px solid #d4dde7;border-top:2px solid #3a73b1;background:#fff;
+  min-height:53px;padding:6px 7px;border-radius:3px}
+.thumb-kpi b{display:block;color:#274a7b;font-size:12px;line-height:1.25}
+.thumb-kpi small{font-size:7px;color:#63758b}
+.thumb-kpi:nth-child(2){border-top-color:#a77a60}
+.thumb-kpi:nth-child(3){border-top-color:#31947e}
+.thumb-kpi:nth-child(4){border-top-color:#8667b0}
+.thumb-timeline{margin-top:7px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:3px}
+.thumb-timeline span{background:#fff;border-top:2px solid #7895b0;padding:4px 3px;
+  font-size:6.5px;font-weight:700;text-align:center;color:#546a7d}
+.thumb-timeline span:nth-child(2){border-top-color:#44a38c}
+.thumb-timeline span:nth-child(3){border-top-color:#d19a60}
+.thumb-timeline span:nth-child(4){border-top-color:#a98264}
+.thumb-field .thumb-rail{background:#143c63}
+.thumb-field .thumb-kpi b{font-size:11px}
+.thumb-field .thumb-kpi{min-height:51px}
+.thumb-market .thumb-rail{background:#092443}
