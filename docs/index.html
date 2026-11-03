@@ -31,7 +31,7 @@ h1{font-size:24px;margin-bottom:10px}p{color:#62738a;line-height:1.5}.loading{fo
   if(!html.toLowerCase().startsWith('<!doctype html>'))throw new Error('Portfolio content is incomplete.');
   // Load the original dashboard payloads without rewriting their scripts, UI, or data.
   const heroPattern=/<section class="intro">[\s\S]*?<\/section>/;
-  if(!heroPattern.test(branded))throw new Error('Portfolio introduction could not be located.');
+  if(!heroPattern.test(html))throw new Error('Portfolio introduction could not be located.');
   const redesigned=html.replace(heroPattern,"<section class=\"intro\"><div class=\"shell heroLayout\"><div class=\"introKicker\">Product strategy · Decision intelligence · Workflow design</div><h1>Decision tools designed to solve <span>complex business problems</span></h1><p>Combining business strategy, analytics, and product design to define the problem, shape the workflow, and build interactive tools that help people move from information to action.</p><div class=\"heroFooter\"><div class=\"introMeta\"><span>Problem framing</span><span>Interactive prototyping</span><span>Analytics products</span><span>Enterprise workflows</span></div><a class=\"heroWorkLink\" href=\"#work\">View the projects <span aria-hidden=\"true\">↓</span></a></div></div></section>");
   // Restore the source HTML's live iframe previews and original interactive demos.
   const integrated=redesigned
