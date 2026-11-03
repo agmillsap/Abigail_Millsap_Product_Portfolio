@@ -30,7 +30,7 @@ Open **Settings → Pages** in this repository. Under **Build and deployment**, 
 
 - `docs/index.html`: portfolio loader; includes links to all three demos.
 - `docs/parts/`: original interactive portfolio HTML split into fourteen chunks to preserve its original large self-contained demo payloads.
-- `docs/abiq-embed.js` and `docs/abiq-embed.css`: portfolio-native ABIQ overlay.
+- `docs/abiq-embed.js`: uses the same full-screen dashboard shell and Back button as the two business demos; ABIQ can also open directly on its own page.
 - `docs/abiq/`: standalone ABIQ static showcase with local brand assets under `docs/abiq/assets/`.
 
 ## Public/private boundary
