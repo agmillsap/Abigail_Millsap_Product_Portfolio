@@ -37,14 +37,16 @@ h1{font-size:24px;margin-bottom:10px}p{color:#62738a;line-height:1.5}.loading{fo
   const demoDecoderWithBranding=[
     'function stripSidebarBranding(key,source){',
     '  const css=key==="field"?".side .logoCrop #logo{visibility:hidden!important}":".sidebar .logo-wrap img{clip-path:inset(51px 0 0 0)!important}";',
+    '  const marketChrome=key==="market"?"body{padding-top:40px!important}#app{height:calc(100vh - 40px)!important;min-height:0!important;overflow:hidden!important}.main{height:calc(100vh - 40px)!important;min-height:0!important;overflow:auto!important}.sidebar{top:0!important;height:100%!important}.toolbar{position:sticky!important;top:0!important;z-index:900!important;background:#fff!important;margin-top:0!important}":"";',
     '  const page=key==="market"?source.replace("alt=\\\"Lowe\\\'s Pro Construction Insights\\\"","alt=\\\"Construction Insights\\\""):source;',
-    '  return page.replace(/<\\/head>/i,\'<style id="portfolio-sidebar-branding">\'+css+\'</style></head>\');',
+    '  return page.replace(/<\\/head>/i,\'<style id="portfolio-sidebar-branding">\'+css+marketChrome+\'</style></head>\');',
     '}',
     'async function getDemo(key){if(CACHE[key])return CACHE[key];CACHE[key]=stripSidebarBranding(key,await unpack(PACKED[key].data));return CACHE[key]}'
   ].join('\n');
   if(!html.includes(demoDecoder))throw new Error('Demo integration format has changed; the original dashboard was not modified.');
   const branded=html.replace(demoDecoder,demoDecoderWithBranding);
   const integrated=branded
+    .replace(/<\/head>/i,'<link rel="stylesheet" href="./portfolio-theme.css?v=20261103-neutral"></head>')
     .replaceAll('https://abiq-sports.streamlit.app','./abiq/')
     .replace('>Open ABIQ</a>','>Open interactive demo</a>')
     .replaceAll('href="./abiq/" target="_blank" rel="noopener"','href="./abiq/"')
