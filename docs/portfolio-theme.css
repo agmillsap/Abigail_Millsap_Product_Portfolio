@@ -77,82 +77,58 @@ body{background:var(--bg);color:var(--ink)}
   .caseActions .button{min-width:130px;font-size:10px}
 }
 
-/* Human-scale editorial introduction. No decorative grid, oversized slogan,
-   or buzzword badges; keep ABIQ's copper as a quiet accent. */
+/* Compact, full-width introduction with the original portfolio message.
+   One-line heading on desktop; comfortable wrapping at mobile widths. */
 .intro{background:#303433;color:#f9f7f3;border-bottom:1px solid #474a46}
 .intro::before{content:none!important;display:none!important}
-.intro .shell{padding-top:66px;padding-bottom:70px}
-.introKicker{
-  font-size:13px;font-weight:600;text-transform:none;letter-spacing:0;
-  color:#d9b9a5;margin-bottom:20px
+.intro .shell.heroLayout{
+  max-width:1380px;
+  padding:34px clamp(24px,3.6vw,52px) 35px;
+  display:block;
+}
+.intro .introKicker{
+  font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.10em;
+  color:#d9b9a5;margin:0 0 12px;line-height:1.5
 }
 .intro h1{
-  font-size:clamp(31px,3.45vw,42px);font-weight:750;line-height:1.14;
-  letter-spacing:-.032em;max-width:790px;width:100%
+  font-size:clamp(24px,2.65vw,35px);font-weight:760;
+  line-height:1.2;letter-spacing:-.035em;max-width:none;
+  width:100%;margin:0;white-space:nowrap
 }
 .intro h1 span{color:#e4bfa7}
-.intro p{max-width:675px;width:100%;font-size:15px;line-height:1.7;margin-top:22px;color:#e4e0da}
-.introMeta{display:none}
+.intro p{
+  max-width:1180px;width:100%;font-size:14px;line-height:1.6;
+  margin:11px 0 0;color:#e4e0da
+}
+.intro .heroFooter{
+  display:flex;gap:20px;align-items:center;justify-content:space-between;
+  margin-top:16px;min-width:0
+}
+.introMeta{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin:0}
+.introMeta span{
+  border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.04);
+  border-radius:999px;padding:3px 8px;color:#e3ddd6;
+  font-size:10px;font-weight:600;line-height:1.5
+}
 .heroWorkLink{
-  display:inline-flex;gap:13px;align-items:center;
-  margin-top:28px;padding-bottom:7px;
-  font-size:13px;font-weight:650;color:#f0e5dc;
-  text-decoration:none;border-bottom:1px solid #bd947b
+  display:inline-flex;align-items:center;gap:10px;white-space:nowrap;
+  margin:0;padding-bottom:3px;font-size:12px;font-weight:650;
+  color:#efdfd2;text-decoration:none;border-bottom:1px solid #bd947b
 }
 .heroWorkLink:hover{color:#edc5aa;border-bottom-color:#edc5aa}
-.heroWorkLink span{font-size:18px;line-height:1}
-@media(max-width:700px){
-  .intro .shell{padding-top:47px;padding-bottom:51px}
-  .introKicker{font-size:12px;margin-bottom:16px}
-  .intro h1{font-size:clamp(30px,7vw,38px);max-width:100%}
-  .intro p{font-size:14px;margin-top:18px}
-  .heroWorkLink{margin-top:23px}
+.heroWorkLink span{font-size:15px;line-height:1}
+@media(max-width:1000px){
+  .intro .shell.heroLayout{padding:29px 30px 32px}
+  .intro h1{font-size:clamp(22px,2.62vw,29px)}
 }
-
-/* Compact editorial hero layout: use the horizontal space instead of stacking
-   the entire introduction into a tall left-aligned column. */
-.intro .shell.heroLayout{
-  max-width:1320px;
-  padding:40px clamp(26px,4vw,54px) 43px;
-  display:grid;
-  grid-template-columns:minmax(0,1.22fr) minmax(310px,.78fr);
-  align-items:center;
-  column-gap:clamp(36px,5vw,80px);
-}
-.intro .heroLead,.intro .heroAside{min-width:0}
-.intro .heroLead .introKicker{
-  font-size:12px;
-  margin-bottom:15px;
-}
-.intro .heroLead h1{
-  max-width:none;
-  font-size:clamp(31px,2.85vw,39px);
-  line-height:1.16;
-  letter-spacing:-.031em;
-}
-.intro .heroAside{padding-top:16px}
-.intro .heroAside p{
-  max-width:none;
-  width:100%;
-  margin:0;
-  font-size:15px;
-  line-height:1.65;
-}
-.intro .heroAside .heroWorkLink{margin-top:19px}
-@media(max-width:900px){
-  .intro .shell.heroLayout{
-    grid-template-columns:1fr;
-    row-gap:17px;
-    padding:34px 28px 38px;
-  }
-  .intro .heroLead .introKicker{margin-bottom:12px}
-  .intro .heroLead h1{font-size:clamp(30px,4.7vw,38px)}
-  .intro .heroAside{padding-top:0}
-  .intro .heroAside p{max-width:720px}
-  .intro .heroAside .heroWorkLink{margin-top:16px}
+@media(max-width:850px){
+  .intro h1{white-space:normal;font-size:clamp(28px,5vw,37px)}
+  .intro .heroFooter{flex-wrap:wrap}
 }
 @media(max-width:520px){
-  .intro .shell.heroLayout{padding:29px 21px 34px;row-gap:15px}
-  .intro .heroLead h1{font-size:clamp(28px,7.4vw,34px)}
-  .intro .heroAside p{font-size:14px;line-height:1.65}
+  .intro .shell.heroLayout{padding:29px 21px 31px}
+  .intro .introKicker{font-size:10px;letter-spacing:.055em}
+  .intro h1{font-size:clamp(28px,7.3vw,34px)}
+  .intro p{font-size:13px;line-height:1.6}
+  .introMeta span{font-size:9.5px}
 }
