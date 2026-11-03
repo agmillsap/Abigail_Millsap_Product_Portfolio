@@ -1,0 +1,78 @@
+/* Professional neutral palette for the public PORTFOLIO LANDING PAGE only.
+   Embedded product demos keep their own design systems. */
+:root{
+  --ink:#2b2d2d;
+  --navy:#303436;
+  --navy2:#514b45;
+  --blue:#9c765b;
+  --sky:#e6c5a9;
+  --muted:#6a6a68;
+  --line:#e4e0da;
+  --bg:#f7f6f3;
+  --white:#fff;
+  --copper:#a87858;
+}
+body{background:var(--bg);color:var(--ink)}
+.top{background:rgba(252,251,248,.98);border-bottom-color:#e4e0da}
+.brand{color:#303332}
+.nav{color:#625f5b}
+.nav a:hover{color:#995f40}
+.intro{
+  background:linear-gradient(110deg,#222829 0%,#363b3a 59%,#554b44 100%);
+  border-bottom:1px solid #655b54;
+}
+.introKicker{color:#eac2a6}
+.intro h1 span{color:#f3cfb4}
+.intro p{color:#e7e3dc}
+.introMeta span{color:#eee8e0;border-color:rgba(238,230,219,.3)}
+.section.white{background:#fdfcfb}
+.sectionHead h2,.story h3,.about h2{color:#303231}
+.case{
+  border-color:#e1ddd7;
+  box-shadow:0 8px 26px rgba(52,49,45,.055);
+}
+.case:hover{box-shadow:0 15px 38px rgba(49,44,39,.11)}
+.case:nth-child(1){border-top-color:#6e6d65}
+.case:nth-child(2){border-top-color:#a48168}
+.case:nth-child(3){border-top-color:#a56f50}
+.caseMedia{background:linear-gradient(135deg,#2b3031,#514944);border-bottom-color:var(--line)}
+.caseMedia:after{background:rgba(42,45,46,.95);border-color:rgba(255,255,255,.45)}
+.case:nth-child(3) .caseMedia:after{content:"Open interactive demo"}
+.caseType,.case:nth-child(3) .caseType{color:#936b51}
+.skillsLine{color:#6c635a}
+.storyNo,.processItem .n{color:#946b50}
+.detail{border-left-color:#d8cbc0}
+.detail b{color:#6a5b4c}
+.detail p{color:#62615e}
+.processItem{background:#fffdfa;border-color:#e3ded7}
+.note{background:#f6f3ee;border-color:#e2d9cf;color:#625c54}
+.footer{background:#fdfcfb;color:#77716c}
+/* Bottom-align the actions in all three equal-height project cards. */
+.caseBody{display:flex;flex-direction:column;flex:1}
+.caseActions{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:auto;
+  padding-top:18px;
+  min-height:62px;
+  width:100%;
+}
+.caseActions .button{
+  min-width:145px;
+  min-height:38px;
+  text-align:center;
+  white-space:nowrap;
+}
+.button{background:#fffdfb;border-color:#cfc9c1;color:#3d4141}
+.button.primary{background:#343a3a;border-color:#343a3a;color:#fff}
+.button:hover{filter:brightness(.95)}
+/* The full-screen demo header belongs to the public portfolio's neutral shell.
+   The embedded dashboards keep their original theme colors. */
+.demoBar{background:#2d3233}
+.previewLoading{background:linear-gradient(135deg,#303636,#5b5149);color:#f0e9df}
+@media(max-width:400px){
+  .caseActions .button{min-width:130px;font-size:10px}
+}
