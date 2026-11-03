@@ -48,9 +48,9 @@ h1{font-size:24px;margin-bottom:10px}p{color:#62738a;line-height:1.5}.loading{fo
   const branded=html.replace(demoDecoder,demoDecoderWithBranding);
   const heroPattern=/<section class="intro">[\s\S]*?<\/section>/;
   if(!heroPattern.test(branded))throw new Error('Portfolio introduction could not be located.');
-  const redesigned=branded.replace(heroPattern,"<section class=\"intro\"><div class=\"shell\"><div class=\"introKicker\">Product strategy, UX and analytics</div><h1>I turn complex business questions into <span>tools people can actually use.</span></h1><p>I start with the people using the product, then work backward through the data, decisions, and workflow. These projects show how I approach that across sales planning, market intelligence, and sports analytics.</p><a class=\"heroWorkLink\" href=\"#work\">View the projects <span aria-hidden=\"true\">↓</span></a></div></section>");
+  const redesigned=branded.replace(heroPattern,"<section class=\"intro\"><div class=\"shell heroLayout\"><div class=\"heroLead\"><div class=\"introKicker\">Product strategy, UX and analytics</div><h1>I turn complex business questions into <span>tools people can actually use.</span></h1></div><div class=\"heroAside\"><p>I start with the people using the product, then work backward through the data, decisions, and workflow. These projects show how I approach that across sales planning, market intelligence, and sports analytics.</p><a class=\"heroWorkLink\" href=\"#work\">View the projects <span aria-hidden=\"true\">↓</span></a></div></div></section>");
   const integrated=redesigned
-    .replace(/<\/head>/i,'<link rel="stylesheet" href="./portfolio-theme.css?v=20261103-editorial"></head>')
+    .replace(/<\/head>/i,'<link rel="stylesheet" href="./portfolio-theme.css?v=20261103-compact"></head>')
     .replaceAll('https://abiq-sports.streamlit.app','./abiq/')
     .replace('>Open ABIQ</a>','>Open interactive demo</a>')
     .replaceAll('href="./abiq/" target="_blank" rel="noopener"','href="./abiq/"')
