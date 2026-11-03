@@ -108,3 +108,51 @@ body{background:var(--bg);color:var(--ink)}
   .intro p{font-size:14px;margin-top:18px}
   .heroWorkLink{margin-top:23px}
 }
+
+/* Compact editorial hero layout: use the horizontal space instead of stacking
+   the entire introduction into a tall left-aligned column. */
+.intro .shell.heroLayout{
+  max-width:1320px;
+  padding:40px clamp(26px,4vw,54px) 43px;
+  display:grid;
+  grid-template-columns:minmax(0,1.22fr) minmax(310px,.78fr);
+  align-items:center;
+  column-gap:clamp(36px,5vw,80px);
+}
+.intro .heroLead,.intro .heroAside{min-width:0}
+.intro .heroLead .introKicker{
+  font-size:12px;
+  margin-bottom:15px;
+}
+.intro .heroLead h1{
+  max-width:none;
+  font-size:clamp(31px,2.85vw,39px);
+  line-height:1.16;
+  letter-spacing:-.031em;
+}
+.intro .heroAside{padding-top:16px}
+.intro .heroAside p{
+  max-width:none;
+  width:100%;
+  margin:0;
+  font-size:15px;
+  line-height:1.65;
+}
+.intro .heroAside .heroWorkLink{margin-top:19px}
+@media(max-width:900px){
+  .intro .shell.heroLayout{
+    grid-template-columns:1fr;
+    row-gap:17px;
+    padding:34px 28px 38px;
+  }
+  .intro .heroLead .introKicker{margin-bottom:12px}
+  .intro .heroLead h1{font-size:clamp(30px,4.7vw,38px)}
+  .intro .heroAside{padding-top:0}
+  .intro .heroAside p{max-width:720px}
+  .intro .heroAside .heroWorkLink{margin-top:16px}
+}
+@media(max-width:520px){
+  .intro .shell.heroLayout{padding:29px 21px 34px;row-gap:15px}
+  .intro .heroLead h1{font-size:clamp(28px,7.4vw,34px)}
+  .intro .heroAside p{font-size:14px;line-height:1.65}
+}
