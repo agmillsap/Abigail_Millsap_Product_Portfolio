@@ -1,0 +1,25 @@
+name: One-time Market NAM anonymization
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/scrub-market-nams.yml'
+permissions:
+  contents: write
+jobs:
+  scrub:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Redact NAM identities from packed public HTML
+        run: python3 .github/scripts/scrub_market_nams.py
+      - name: Commit redacted published source
+        run: |
+          if git diff --quiet -- docs/parts; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/parts
+          git commit -m "Scrub NAM identities from public Market Opportunity demo"
+          git push
